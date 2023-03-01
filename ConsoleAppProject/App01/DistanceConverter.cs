@@ -43,7 +43,9 @@ namespace ConsoleAppProject.App01
 
         private void InputFeet()
         {
-            throw new NotImplementedException();
+            Console.Write("Please enter the number of feet > ");
+            string value = Console.ReadLine();
+            miles = Convert.ToDouble(value);
         }
 
         private void OutputFeet()
@@ -58,12 +60,19 @@ namespace ConsoleAppProject.App01
 
         private void InputMiles()
         {
-            throw new NotImplementedException();
+            Console.Write("Please enter the number of miles > ");
+            string value = Console.ReadLine();
+            miles = Convert.ToDouble(value);
         }
 
         private void OutptHeading()
         {
             throw new NotImplementedException();
+        }
+
+        internal void run()
+        {
+            Console.WriteLine();
         }
     }
 }
