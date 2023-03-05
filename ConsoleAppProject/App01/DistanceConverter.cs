@@ -13,7 +13,7 @@ namespace ConsoleAppProject.App01
         public static double FEET_IN_MILE = 5280;
         public static double METER_IN_MILE = 1609.34;
 
-        public double miles, meters, feet;
+        public double miles, feet;
 
         public void Run()
         {
@@ -24,55 +24,71 @@ namespace ConsoleAppProject.App01
             OutputFeet();
 
             InputFeet();
-            CalcualteMiles();
+            CalculateMiles();
+            OutputMiles();
+
+
+            InputMeters();
+            CalculateMiles();
             OutputMiles();
 
 
 
         }
 
-        private void OutputMiles()
+        private void OutptHeading()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("\n-----------------------------");
+            Console.WriteLine("      Conver Miles to Feet   ");
+            Console.WriteLine("         by Uthman Uthman   ");
+            Console.WriteLine("-----------------------------\n");
+        }
+        private void InputMiles()
+        {
+            Console.Write("Please enter the number of miles: ");
+            string value = Console.ReadLine();
+            miles = Convert.ToDouble(value);
+
+
+        }
+        private void CalculateFeet()
+        {
+            feet = miles * 5280;
+
+        }
+        private void OutputFeet()
+        {
+            Console.WriteLine(miles + "miles is " + feet + " feet!");
         }
 
-        private void CalcualteMiles()
-        {
-            throw new NotImplementedException();
-        }
 
         private void InputFeet()
         {
-            Console.Write("Please enter the number of feet > ");
+            Console.Write("Please enter the number of feet: ");
             string value = Console.ReadLine();
-            miles = Convert.ToDouble(value);
+            feet = Convert.ToDouble(value);
         }
 
-        private void OutputFeet()
+        private void CalculateMiles()
         {
-            throw new NotImplementedException();
+            miles = feet / 1609.34;
         }
 
-        private void CalculateFeet()
+        private void OutputMiles()
         {
-            throw new NotImplementedException();
+            Console.WriteLine(feet + "feet is " + miles + "miles!");
         }
 
-        private void InputMiles()
+
+        private void InputMeters ()
         {
-            Console.Write("Please enter the number of miles > ");
+            Console.Write("Please enter the number of meeters: ");
             string value = Console.ReadLine();
-            miles = Convert.ToDouble(value);
+            feet = Convert.ToInt64(value);
         }
 
-        private void OutptHeading()
-        {
-            throw new NotImplementedException();
-        }
+        
 
-        internal void run()
-        {
-            Console.WriteLine();
-        }
+
     }
 }
