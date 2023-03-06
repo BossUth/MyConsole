@@ -5,7 +5,9 @@ using System.Security.Cryptography.X509Certificates;
 namespace ConsoleAppProject.App01
 {
     /// <summary>
-    /// Please describe the main features of this App
+    /// This app is foing to about how i am going to
+    /// convert FEET to MILE, MILE to METER 
+    /// and FEET to METER
     /// </summary>
     /// <author>
     /// Uthman version 0.6
@@ -29,19 +31,29 @@ namespace ConsoleAppProject.App01
         {
             fromUnit = MILES;
             toUnit = FEET;
-        }    
-        
-        
+        }
+
+        /// <summary>
+        /// This method is used to input the distance from all the
+        /// the reqirements.
+        /// </summary>
         public void ConvertDistance()
         {
-            fromUnit = SelectUnit("Select from the distance units ");
-            toUnit = SelectUnit("Select to the distance units ");
-            OutptHeading($"Convering {fromUnit} to {toUnit}");
+            OutptHeading();
+
+            fromUnit = SelectUnit(" Select from the distance units ");
+            toUnit = SelectUnit(" Select to the distance units ");
+
+            Console.WriteLine($"Convering {fromUnit} to {toUnit}");
             fromDistance = InputDIstance($"Enter miles {fromUnit} ");
             CalculateDistance();
             OutputDistance();
         }
 
+        /// <summary>
+        /// This this is for calculating all the 
+        /// different distance that you can have.
+        /// </summary>
         private void CalculateDistance()
         {
             if(fromUnit == MILES && toUnit == FEET)
@@ -73,10 +85,18 @@ namespace ConsoleAppProject.App01
         private string SelectUnit(string prompt)
         {
             string choice = DisplayChoices(prompt);
-            return ExecuteChoice(choice);
+            string unit =  ExecuteChoice(choice);
+            Console.WriteLine($"\n You have chosen {unit}");
+            return unit;
 
         }
 
+
+        /// <summary>
+        /// This is to give the a choice from 1 to 3
+        /// to pick which one they want to input and
+        /// return
+        /// </summary>
         private static string ExecuteChoice(string choice)
         {
             if (choice.Equals("1"))
@@ -107,16 +127,24 @@ namespace ConsoleAppProject.App01
             return choice;
         }
 
-        private void OutptHeading(String prompt)
+        /// <summary>
+        /// This is a short discription of the Output
+        /// of the Application and the name of the Author
+        /// </summary>
+        private void OutptHeading()
         {
             Console.WriteLine("\n-----------------------------");
             Console.WriteLine("        Distance Converter   ");
             Console.WriteLine("         by Uthman Uthman   ");
             Console.WriteLine("-----------------------------\n");
 
-            Console.WriteLine(prompt);
-            Console.WriteLine();
+        
         }
+
+        /// <summary>
+        /// This is to give a message to input the miles
+        /// as a double number
+        /// </summary>
         private double InputDIstance(string prompt)
         {
             Console.Write("Please enter the number of miles: ");
@@ -129,7 +157,7 @@ namespace ConsoleAppProject.App01
 
         private void OutputDistance()
         {
-            Console.WriteLine($"{fromDistance}  {fromUnit}" +
+            Console.WriteLine($"\n {fromDistance}  {fromUnit}" +
                 $" is {toDistance} {toUnit}!");
         }
 
