@@ -11,37 +11,46 @@ namespace ConsoleAppProject.App01
     public class DistanceConverter
     {
         public static double FEET_IN_MILE = 5280;
-        public static double METER_IN_MILE = 1609.34;
+        public static double MILE_IN_METER = 1609.34;
 
-        public double miles, feet;
+        public double miles, meter, feet;
 
-        public void Run()
+        public void MilesToFeet()
         {
-            OutptHeading();
-
+            
+            OutptHeading("Convering Miles to Feet");
             InputMiles();
             CalculateFeet();
             OutputFeet();
+        }
 
+        public void FeetToMiles()
+        {
+            OutptHeading("Convering Feet to Miles");
             InputFeet();
             CalculateMiles();
             OutputMiles();
-
-
-            InputMeters();
-            CalculateMiles();
-            OutputMiles();
-
-
-
         }
 
-        private void OutptHeading()
+        public void MilesToMeter()
+        {
+            OutptHeading("Convering Miles to Meter");
+            InputMiles();
+            CalculateMeters();
+            OutputMeters();
+        }
+
+
+
+        private void OutptHeading(String prompt)
         {
             Console.WriteLine("\n-----------------------------");
-            Console.WriteLine("      Conver Miles to Feet   ");
+            Console.WriteLine("        Distance Converter   ");
             Console.WriteLine("         by Uthman Uthman   ");
             Console.WriteLine("-----------------------------\n");
+
+            Console.WriteLine(prompt);
+            Console.WriteLine();
         }
         private void InputMiles()
         {
@@ -82,12 +91,20 @@ namespace ConsoleAppProject.App01
 
         private void InputMeters ()
         {
-            Console.Write("Please enter the number of meeters: ");
+            Console.Write("Please enter the number of meters: ");
             string value = Console.ReadLine();
             feet = Convert.ToInt64(value);
         }
 
-        
+        private void CalculateMeters()
+        {
+            meter = miles / 3.28084;
+        }
+
+        private void OutputMeters()
+        {
+            Console.WriteLine(miles + "miles is " + meter + "meter!");
+        }
 
 
     }
