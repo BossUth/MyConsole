@@ -20,8 +20,7 @@ namespace ConsoleAppProject.App02
     public class Program
     {
         public void Main()
-        {
-            Console.WriteLine(" BMI Calculator - Uthman Uthman.");
+        {            Console.WriteLine(" BMI Calculator - Uthman Uthman.");
 
 
             Console.Write($"Hi, now let's calculate your BMI.");
