@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Reflection.Metadata.Ecma335;
 using ConsoleAppProject.Helpers;
 
 namespace ConsoleAppProject.App03
@@ -11,6 +12,17 @@ namespace ConsoleAppProject.App03
     /// </summary>
     public class StudentGrades
     {
+
+        // The Grade Boundaries
+
+        public const int LowestMarkLowest = 0;
+        public const int LowestMarkD = 40;
+        public const int LowestMarkC = 50;
+        public const int LowestMarkB = 60;
+        public const int LowestMarkA = 70;
+        public const int HighestMarkPerfect = 100;
+
+        //
         public string[] Students { get; set; }
 
         public int[] Marks { get; set; }
@@ -49,7 +61,11 @@ namespace ConsoleAppProject.App03
 
         public Grades ConvertToGrade(int mark)
         {
-
+            if (mark >= 0 && mark < LowestMarkD) 
+            {
+                return Grades.F;
+            }
+            else return Grades.D;
         }
 
         public void CalculateStats()
