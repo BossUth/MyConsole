@@ -24,8 +24,8 @@ namespace ConsoleAppProject
             Console.WriteLine();
             Console.Beep();
 
-            DistanceConverter converter = new DistanceConverter();
-            converter.ConvertDistance();
+           // DistanceConverter converter = new DistanceConverter();
+           // converter.ConvertDistance();
 
 
             Console.WriteLine("This is the BMI Calculator");
