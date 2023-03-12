@@ -20,7 +20,8 @@ namespace ConsoleAppProject.App02
     public class Program
     {
         public void Main()
-        {            Console.WriteLine(" BMI Calculator - Uthman Uthman.");
+        {            
+            Console.WriteLine(" BMI Calculator - Uthman Uthman.");
 
 
             Console.Write($"Hi, now let's calculate your BMI.");
@@ -39,9 +40,12 @@ namespace ConsoleAppProject.App02
                 Console.WriteLine($"Your BMI of {BMI:F2} is a healthy weight and normal - Keep at your lifestyle.");
             else if (BMI >= 25 && BMI <= 29.9)
                 Console.WriteLine($"Your BMI of {BMI:F2} is classified as overwiehgt");
-            else
-                Console.WriteLine($"Your BMI f {BMI:F2} is considered obese.");
-
+            else if (BMI >= 30.0 && BMI <= 34.9)
+                Console.WriteLine($"Your BMI of {BMI:F2} is considered obese|.");
+            else if (BMI >= 35.0 && BMI <= 39.9)
+                Console.WriteLine($"Your BMI of {BMI:F2} is considered obese||.");
+            else if (BMI >= 40.0)
+                Console.WriteLine($"Your BMI of {BMI:F2} is considered obese|||.");
 
             Console.Write("You people should focous more on exercising than eatin then you would not be this weight.");
 

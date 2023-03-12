@@ -48,6 +48,10 @@ namespace ConsoleAppProject.App01
             fromDistance = InputDIstance($"Enter miles {fromUnit} ");
             CalculateDistance();
             OutputDistance();
+
+            Console.WriteLine("Please enter a valid number");
+            string name = Console.ReadLine();
+            Console.WriteLine("Error Message");
         }
 
         /// <summary>
@@ -80,6 +84,8 @@ namespace ConsoleAppProject.App01
             {
                 toDistance = fromDistance / FEET_IN_METER;
             }
+
+            
         }
 
         private string SelectUnit(string prompt)
@@ -161,6 +167,6 @@ namespace ConsoleAppProject.App01
                 $" is {toDistance} {toUnit}!");
         }
 
-
+        
     }
 }

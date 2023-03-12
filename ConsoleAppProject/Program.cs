@@ -24,10 +24,8 @@ namespace ConsoleAppProject
             Console.WriteLine();
             Console.Beep();
 
-           DistanceConverter converter = new DistanceConverter();
-           converter.ConvertDistance();
-
-
+            //DistanceConverter converter = new DistanceConverter();
+            //converter.ConvertDistance();
             Console.WriteLine("This is the BMI Calculator");
             Console.WriteLine();
             Console.Beep();
@@ -51,13 +49,19 @@ namespace ConsoleAppProject
                 Console.WriteLine($"Your BMI of {BMI:F2} is a healthy weight and normal - Keep at your lifestyle.");
             else if (BMI >= 25 && BMI <= 29.9)
                 Console.WriteLine($"Your BMI of {BMI:F2} is classified as overwiehgt");
+            else if (BMI >= 30.0 && BMI <= 34.9)
+                Console.WriteLine($"Your BMI of {BMI:F2} is considered obese|.");
+            else if (BMI >= 35.0 && BMI <= 39.9)
+                Console.WriteLine($"Your BMI of {BMI:F2} is considered obese||.");
+            else if (BMI >= 40.0)
+                Console.WriteLine($"Your BMI of {BMI:F2} is considered obese|||.");
             else
-                Console.WriteLine($"Your BMI f {BMI:F2} is considered obese.");
+                Console.WriteLine($"Your BMI 0f {BMI:F2} is considered obese.");
 
 
-            Console.Write("You people should focous more on exercising than eatin then you would not be this weight.");
+            Console.Write("You people should focous more on exercising than eatin then you would not be this weight."); 
         }
 
-        
+
     }
 }
