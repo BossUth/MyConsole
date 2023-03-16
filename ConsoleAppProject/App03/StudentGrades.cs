@@ -1,10 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using System.Reflection.Metadata.Ecma335;
-using System.Runtime.InteropServices.WindowsRuntime;
-using System.Threading;
-using ConsoleAppProject.Helpers;
 
 namespace ConsoleAppProject.App03
 {
@@ -14,7 +8,6 @@ namespace ConsoleAppProject.App03
     /// </summary>
     public class StudentGrades
     {
-
         // The Grade Boundaries
 
         public const int LowestMarkLowest = 0;
@@ -23,25 +16,13 @@ namespace ConsoleAppProject.App03
         public const int LowestMarkB = 60;
         public const int LowestMarkA = 70;
         public const int HighestMarkPerfect = 100;
-
-
-
-        //
-
-
-
         public string[] Students { get; set; }
-
         public int[] Marks { get; set; }
-
         public int[] GradeProfile { get; set; }
 
-
         public int Total { get; set; }
-        public double[] Mean { get; set; }
-
+        public double Mean { get; set; }
         public int Minimum { get; set; }
-
         public int Maximum { get; set; }
 
         public StudentGrades()
@@ -99,9 +80,6 @@ namespace ConsoleAppProject.App03
                 {
                     Environment.Exit(0);
                 }
-
-
-            
         }
 
         private void OutputStatistics()
@@ -235,11 +213,11 @@ namespace ConsoleAppProject.App03
             {
                 if (mark > Maximum)
                 {
-                    Minimum = mark;
+                    Maximum = mark;
                 }
                 else if (mark < Minimum)
                 {
-                    Maximum = mark;
+                    Minimum = mark;
                 }
             }
         }

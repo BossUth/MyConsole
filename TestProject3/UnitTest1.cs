@@ -20,6 +20,7 @@ namespace TestProject3
         {
         }
 
+        [TestMethod]
         private void TestCover39ToGradeF()
         {
 
@@ -34,6 +35,7 @@ namespace TestProject3
 
         }
 
+        [TestMethod]
         private void TestCovert0ToGradeF()
         {
 
@@ -69,6 +71,7 @@ namespace TestProject3
              Assert.IsTrue(expectedProfile);
         }
 
+        [TestMethod]
         public void CalculateMinMax()
         {
             value = converter.Marks = testMarks;
