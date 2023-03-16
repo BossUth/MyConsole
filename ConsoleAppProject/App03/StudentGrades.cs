@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using System.Text;
 
 namespace ConsoleAppProject.App03
 {
@@ -19,6 +21,8 @@ namespace ConsoleAppProject.App03
         public string[] Students { get; set; }
         public int[] Marks { get; set; }
         public int[] GradeProfile { get; set; }
+
+        public int[] Counts = new int[5];
 
         public int Total { get; set; }
         public double Mean { get; set; }
@@ -74,7 +78,7 @@ namespace ConsoleAppProject.App03
                 else if (choice == "4")
                 {
                     Console.WriteLine("Please Select from the Menue");
-                    OutputGradeProfile();
+                    //OutputGradeProfile();
                 }
                 else if (choice == "5")
                 {
@@ -84,29 +88,37 @@ namespace ConsoleAppProject.App03
 
         private void OutputStatistics()
         {
-            double overallMean = Mean;
-            Console.WriteLine($"Mean: {overallMean:F}");
-
-            int minimumMark = Minimum;
-            Console.WriteLine($" Minimum mark: {minimumMark}");
-
-
-            int maximumMark = Maximum;
-            Console.WriteLine($" Maximum mark: {maximumMark}");
+            CalculateMean();
+            CalculateMinMax();
+            Console.WriteLine($"Mean Mark: {Mean}\nMinimum Mark: {Minimum}\nMaximum Mark: {Maximum}");
+            Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("Press any key to continue");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.ReadKey();
+            DisplayMenue();
         }
 
         private void OutputGradeProfile()
         {
-            Grades grades = Grades.X;
-            Console.WriteLine();
+            CalculateGradeProfile();
+            // ADDING UP ALL THE GRADE COUNTS SO I CAN USE IT AS A TOTAL STUDENTS
+            int total = Counts.Sum();
+            // PRINTING ON THE SCREEN 
+            Console.WriteLine($" A (First Class) > There are {Counts[0]} students in this range, which is {(double)Counts[0] / total:P}");
+            Console.WriteLine($" B (Upper Second Class) > {Counts[1]} students in this range, which is {(double)Counts[1] / total:P}");
+            Console.WriteLine($" C (Lower Second Class) > {Counts[2]} students in this range, which is  {(double)Counts[1] / total:P}");
+            Console.WriteLine($" D (Third Class) > {Counts[3]} students in this range, which is  {(double)Counts[3] / total:P}");
+            Console.WriteLine($" F (Fail) > {Counts[4]} students in this range, which is  {(double)Counts[4] / total:P}");
 
-            foreach(int count in GradeProfile)
-                {
-                int percentage = count * 100 / Marks.Length;
-                Console.WriteLine($"Grades {grades} {percentage}% Count {count}");
-                grades++;
-            }
+            Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("Press any key to continue");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.ReadKey();
+            DisplayMenue();
         }
+       
 
         public void InputMarks()
         {
@@ -143,6 +155,16 @@ namespace ConsoleAppProject.App03
             {
                 Grades outputGrade = ConvertMarktoGrades(Marks[i]);
                 Console.WriteLine($"{Students[i]} ------- Mark = {Marks[i]} Grade = {outputGrade}");
+                Console.WriteLine($"{Students[i]} ------- Mark = {Marks[i]} Grade = {outputGrade}");
+                Console.WriteLine($"{Students[i]} ------- Mark = {Marks[i]} Grade = {outputGrade}");
+                Console.WriteLine($"{Students[i]} ------- Mark = {Marks[i]} Grade = {outputGrade}");
+
+                Console.WriteLine();
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("Press any key to continue");
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.ReadKey();
+                DisplayMenue();
             }
 
         }
