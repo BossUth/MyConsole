@@ -1,4 +1,6 @@
-﻿using System.ComponentModel;
+﻿using ConsoleAppProject.Helpers;
+using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 namespace ConsoleAppProject.App03
 {
@@ -25,6 +27,11 @@ namespace ConsoleAppProject.App03
         B,
         [Display(Name = "1st")]
         [Description("BSc(Hons) First Class")]
-        A
+        A,
+
+        [Display(Name = "error")]
+        [Description("invalid")]
+        X,
+
     }
 }

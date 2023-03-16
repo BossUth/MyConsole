@@ -51,7 +51,8 @@ namespace ConsoleAppProject.App02
                 Console.WriteLine($"Your BMI of {BMI1:F1} is a healthy weight and normal - Keep at your lifestyle.");
             else if (BMI1 >= 25 && BMI <= 29.9)
                 Console.WriteLine($"Your BMI of {BMI1:F1} is classified as overwiehgt");
-            else if (BMI1 >= 30.0 && BMI <= 34.9);
+            else if (BMI1 >= 30.0 && BMI <= 34.9)
+                Console.WriteLine($"Your BMI of {BMI1:F1} is considered obese|.");
             else if (BMI1 >= 35.0 && BMI <= 39.9)
                 Console.WriteLine($"Your BMI of {BMI1:F1} is considered obese||.");
             else if (BMI1 >= 40.0)
