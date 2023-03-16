@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Reflection.Metadata.Ecma335;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading;
 using ConsoleAppProject.Helpers;
 
 namespace ConsoleAppProject.App03
@@ -105,12 +106,28 @@ namespace ConsoleAppProject.App03
 
         private void OutputStatistics()
         {
-            throw new NotImplementedException();
+            double overallMean = Mean;
+            Console.WriteLine($"Mean: {overallMean:F}");
+
+            int minimumMark = Minimum;
+            Console.WriteLine($" Minimum mark: {minimumMark}");
+
+
+            int maximumMark = Maximum;
+            Console.WriteLine($" Maximum mark: {maximumMark}");
         }
 
         private void OutputGradeProfile()
         {
-            throw new NotImplementedException();
+            Grades grades = Grades.X;
+            Console.WriteLine();
+
+            foreach(int count in GradeProfile)
+                {
+                int percentage = count * 100 / Marks.Length;
+                Console.WriteLine($"Grades {grades} {percentage}% Count {count}");
+                grades++;
+            }
         }
 
         public void InputMarks()
@@ -212,7 +229,7 @@ namespace ConsoleAppProject.App03
         public void CalculateMinMax()
         {
             Minimum = Marks[0];
-            Maximum = Marks[1];
+            Maximum = Marks[0];
 
             foreach (int mark in Marks)
             {
@@ -230,7 +247,10 @@ namespace ConsoleAppProject.App03
         {
             foreach (int mark in Marks)
             {
-               Total += mark;
+                if (mark > Maximum) { Maximum = mark; }
+
+                if (mark < Minimum) { Minimum = mark; }
+                Total += mark;
             }
             double Mean = (double)Total / Students.Length;
         }
