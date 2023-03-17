@@ -16,9 +16,13 @@ namespace ConsoleAppProject.App03
         [Display(Name = "Fail")]
         [Description("Referred")]
         F,
+        [Display(Name = "-III")]
+        [Description("BSc(Hons) Third Class")]
+        DMINUS,
         [Display(Name = "III")]
         [Description("BSc(Hons) Third Class")]
         D,
+        
         [Display(Name = "II-2")]
         [Description("BSc(Hons) Lower Second")]
         C,

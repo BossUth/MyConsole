@@ -28,6 +28,8 @@ namespace ConsoleAppProject.App03
         public const int LowestMarkB = 60;
         public const int LowestMarkA = 70;
         public const int HighestMarkPerfect = 100;
+
+        // THis is the objects
         public string[] Students { get; set; }
         public int[] Marks { get; set; }
         public int[] GradeProfile { get; set; }
@@ -41,6 +43,8 @@ namespace ConsoleAppProject.App03
         public int Minimum { get; set; }
         public int Maximum { get; set; }
 
+
+        // This is for the names for the students
         public StudentGrades()
         {
             Students = new string[]
@@ -54,11 +58,16 @@ namespace ConsoleAppProject.App03
             Marks = new int[Students.Length];
         }
 
+        //This is the run method
+
         public void Run()
         {
             DisplayMenu();
         }
 
+
+        //This is the Menu for you to pick form
+        //The list
         public void DisplayMenu()
         {
             Console.WriteLine("1. Input Marks");
@@ -68,7 +77,7 @@ namespace ConsoleAppProject.App03
             Console.WriteLine("5. Quit");
             string choice;
 
-           
+                 
                 Console.WriteLine("\t");
                 Console.Write("Answer : ");
                 choice = Console.ReadLine();
@@ -100,11 +109,13 @@ namespace ConsoleAppProject.App03
                 }
         }
 
+        // This is for to calculate the minmax
+        // Tis is to calculate the Mean
+
         private void OutputStatistics()
         {
             CalculateMean();
             CalculateMinMax();
-            Console.WriteLine($"Mean Mark: {Mean}\nMinimum Mark: {Minimum}\nMaximum Mark: {Maximum}");
             Console.WriteLine();
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("Press a key");
@@ -113,18 +124,23 @@ namespace ConsoleAppProject.App03
             DisplayMenu();
         }
 
+
+        // Output the grade profile
+
         private void OutputGradeProfile()
         {
             CalculateGradeProfile();
             // ADDING UP ALL THE GRADE COUNTS SO I CAN USE IT AS A TOTAL STUDENTS
-            int total = Counts.Sum();
-            double total1 = Counts.Sum();
+            //int total = Counts.Sum();
             // PRINTING ON THE SCREEN 
-            Console.WriteLine($" A (First Class) > There are {Counts[0]} students in this range, which is {(int)Counts[0] / total:P}");
-            Console.WriteLine($" B (Upper Second Class) > {Counts[1]} students in this range, which is {(int)Counts[1] / total:P}");
-            Console.WriteLine($" C (Lower Second Class) > {Counts[2]} students in this range, which is  {(int)Counts[2] / total:P}");
-            Console.WriteLine($" D (Third Class) > {Counts[3]} students in this range, which is  {(int)Counts[3] / total:P}");
-            Console.WriteLine($" F (Fail) > {Counts[4]} students in this range, which is  {(int)Counts[4] / total:P}");
+            Grades grades = Grades.X;
+            Console.WriteLine();
+            foreach (int count in Counts)
+            {
+                int percentage = count * 100/ Marks.Length;
+                Console.WriteLine($"Grade {grades}{percentage}% Count {grades}");
+                grades++;
+            }
 
             Console.WriteLine();
             Console.ForegroundColor = ConsoleColor.White;
@@ -134,6 +150,9 @@ namespace ConsoleAppProject.App03
             DisplayMenu();
         }
        
+
+        // This is to input the marks that will show on display
+        // And if invalid show error
 
         public void InputMarks()
         {
@@ -165,6 +184,7 @@ namespace ConsoleAppProject.App03
 
         }
 
+        // Output the marks
         public void OutputMarks()
         {
             Console.WriteLine("Names".PadRight(14) + "Marks".PadRight(8) + "Grade");
@@ -183,6 +203,8 @@ namespace ConsoleAppProject.App03
 
             }
 
+            // This will allow me to carry on until i end it
+
             Console.WriteLine($"These are the {students}" + " students. ");
             Console.WriteLine();
             Console.ForegroundColor = ConsoleColor.White;
@@ -194,6 +216,8 @@ namespace ConsoleAppProject.App03
 
         }
 
+
+        // Convert the marks
         public Grades ConvertMarktoGrades(int mark)
         {
             if (mark < 40)
@@ -201,22 +225,22 @@ namespace ConsoleAppProject.App03
                 return Grades.F;
             }
 
-            else if (mark > 39 && mark < 50)
+            else if ( mark < 50)
             {
                 return Grades.D;
             }
 
-            else if (mark > 49 && mark < 60)
+            else if (mark < 60)
             {
                 return Grades.C;
             }
 
-            else if (mark > 59 && mark < 70)
+            else if (mark < 70)
             {
                 return Grades.B;
             }
 
-            else if (mark > 69)
+            else if (mark <= 100)
             {
                 return Grades.A;
             }
@@ -224,6 +248,9 @@ namespace ConsoleAppProject.App03
             return Grades.X;
 
         }
+
+
+        // this is to conver to grades
 
         public Grades ConvertToGrade(int mark)
         {
@@ -251,6 +278,8 @@ namespace ConsoleAppProject.App03
 
         }
 
+        // This is where the calculations will held
+
         public void CalculateMinMax()
         {
             Minimum = Marks[0];
@@ -268,51 +297,61 @@ namespace ConsoleAppProject.App03
                 }
             }
         }
+
+
+        // this is to calculate the mean for the amount of marks.
         public void CalculateMean()
         {
             foreach (int mark in Marks)
             {
-                if (mark > Maximum) { Maximum = mark; }
+                if (mark < Minimum)
+                {
+                    Minimum = mark;
+                }
+                if (mark > Maximum)
+                {
+                    Maximum = mark;
+                }
 
-                if (mark < Minimum) { Minimum = mark; }
                 Total += mark;
             }
-            double Mean = (double)Total / Students.Length;
+            Mean = Total / Students.Length;
+
+            Console.WriteLine($"Mean Mark: {Mean}\nMinimum Mark: {Minimum}\nMaximum Mark: {Maximum}");
+
         }
+
+
+        // to calculate the grade profile which will tell
+        // the amount of studnts got the a certern amount a marks
 
         public void CalculateGradeProfile()
         {
-            
-
             foreach (int mark in Marks)
             {
-                if (mark >= FIRSTCLASS)
+                if (mark <= FIRSTCLASS)
                 {
                     Counts[0]++;
                 }
-                else if (mark >= UPPERSECONDCLASS)
+                else if (mark <= UPPERSECONDCLASS)
                 {
                     Counts[1]++;
                 }
-                else if (mark >= LOWERSECONDCLASS)
+                else if (mark <= LOWERSECONDCLASS)
                 {
                     Counts[2]++;
                 }
-                else if (mark >= THIRDCLASS)
+                else if (mark <= THIRDCLASS)
                 {
                     Counts[3]++;
                 }
-                else
+                else if (mark >= FAIL)
                 {
                     Counts[4]++;
                 }
+
             }
 
-            foreach (int mark in Marks)
-            {
-                Grades grade = ConvertToGrade(mark);
-                GradeProfile[(int)grade]++;
-            }
         }
 
         public void CalculateGradeProfileUnitTest()
@@ -324,7 +363,7 @@ namespace ConsoleAppProject.App03
             foreach (int mark in Marks)
             {
                 Grades grade = ConvertToGrade(mark);
-                GradeProfile[(int)grade]++;
+                Counts[(int)grade]++;
             }
         }
     }
