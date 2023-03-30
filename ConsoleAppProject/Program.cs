@@ -1,6 +1,7 @@
 ﻿using ConsoleAppProject.App01;
 using ConsoleAppProject.App02;
 using ConsoleAppProject.App03;
+using ConsoleAppProject.App04;
 using ConsoleAppProject.Helpers;
 using System;
 
@@ -34,7 +35,7 @@ namespace ConsoleAppProject
             Console.WriteLine(" 1. Distance Converter ");
             Console.WriteLine(" 2. BMI Calculator ");
             Console.WriteLine(" 3. Student Grades ");
-            Console.WriteLine(" 4.  ");
+            Console.WriteLine(" 4. Social Network ");
 
             Console.WriteLine("\t");
             Console.Write("Answer : ");

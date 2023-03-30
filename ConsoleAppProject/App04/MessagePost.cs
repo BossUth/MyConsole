@@ -26,6 +26,10 @@ namespace ConsoleAppProject.App04
         public String Message { get; }
 
         public DateTime Timestamp { get; }
+        public int MessageId { get; internal set; }
+        public string Author { get; internal set; }
+        public int PostID { get; internal set; }
+        public NewsFeed NewsFeed { get; internal set; } = new NewsFeed();
 
         /// <summary>
         /// Constructor for objects of class MessagePost.
@@ -38,7 +42,7 @@ namespace ConsoleAppProject.App04
         /// </param>
         public MessagePost(String author, String text)
         {
-            Username = author;
+            Author = author;
             Message = text;
             Timestamp = DateTime.Now;
 
@@ -93,7 +97,7 @@ namespace ConsoleAppProject.App04
 
             if (likes > 0)
             {
-                Console.WriteLine($"    Likes:  {likes}  people like this.");
+                Console.WriteLine($"Likes:  {likes}  people like this.");
             }
             else
             {
@@ -102,11 +106,11 @@ namespace ConsoleAppProject.App04
 
             if (comments.Count == 0)
             {
-                Console.WriteLine("    No comments.");
+                Console.WriteLine("No comments.");
             }
             else
             {
-                Console.WriteLine($"    {comments.Count}  comment(s). Click here to view.");
+                Console.WriteLine($"{comments.Count}  comment(s). Click here to view.");
             }
         }
 
@@ -137,6 +141,17 @@ namespace ConsoleAppProject.App04
             {
                 return seconds + " seconds ago";
             }
+        }
+
+        public void CommentDisplay()
+        {
+            foreach (string comment in comments)
+                Console.WriteLine(comment);
+        }
+
+        internal void Remove(MessagePost message)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using System.Transactions;
 
 namespace ConsoleAppProject.App04
 {
@@ -22,6 +22,10 @@ namespace ConsoleAppProject.App04
     {
         private readonly List<MessagePost> messages;
         private readonly List<PhotoPost> photos;
+
+        public List<MessagePost> Filename { get; private set; }
+        public string Author { get; private set; }
+        public List<MessagePost> Caption { get; private set; }
 
         ///<summary>
         /// Construct an empty news feed.
@@ -72,6 +76,111 @@ namespace ConsoleAppProject.App04
                 photo.Display();
                 Console.WriteLine();   // empty line between posts
             }
+        }
+
+        internal void AddComment(int iD, string comment)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal double AmountOfPosts()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<MessagePost> GetMessages()
+        {
+            return messages;
+        }
+
+        public void CreateMessagePost(List<MessagePost> GetMessages)
+        {
+            Console.WriteLine();
+            GetMessages = EnterText("Please Enter Message");
+        }
+
+        private List<MessagePost> EnterText(string Message)
+        {
+            string text;
+            Console.Write(Message);
+            text = Console.ReadLine();
+            return text;
+        }
+
+        public void CreatePhotoPost()
+        {
+            Console.WriteLine();
+            Filename = EnterText("Enter Filename >");
+            Console.WriteLine();
+            Caption = EnterText("Enter Caption >");
+            Console.WriteLine();
+            PhotoPost message = new PhotoPost(Author, Filename, Caption);
+            AddPhotoMessage(message);
+        }
+
+        private void AddPhotoMessage(PhotoPost message)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void FindMessages(int ID)
+        {
+            foreach (MessagePost message in messages)
+                if (message.MessageId == ID)
+                {
+                    return;
+                }
+        }
+
+        public void FindPostByAuthor(string author)
+        {
+            foreach (MessagePost message in messages)
+                if (message.Author == author)
+                {
+                    message.Display();
+                }
+                else
+                {
+                    Console.WriteLine("Author Not Found");
+                }
+        }
+
+        internal void LikePost(int ID)
+        {
+            foreach (MessagePost message in messages)
+
+                if (message.PostID == ID)
+                {
+                    message.Like();
+                }
+        }
+
+        internal void RemovePost(int ID)
+        {
+            MessagePost message = FindMessages(ID);
+
+            if (message != null)
+            {
+                Console.WriteLine($"\n The Post with ID {ID} has been Removed");
+                message.Remove(message);
+            }
+            else
+            {
+                Console.WriteLine($"\n The Post with ID {ID} does not exist");
+
+                messages.Remove(message);
+                message.Display();
+            }
+        }
+
+        internal void UnlikePost(int ID)
+        {
+            foreach (MessagePost message in messages)
+
+                if (message.PostID == ID)
+                {
+                    message.Unlike();
+                }
         }
     }
 

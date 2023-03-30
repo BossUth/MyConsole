@@ -27,7 +27,9 @@ namespace ConsoleAppProject.App04
         public DateTime Timestamp { get; }
 
         private int likes;
-        
+        private string author;
+        private List<MessagePost> filename;
+        private List<MessagePost> caption;
         private readonly  List<String> comments;
 
         ///<summary>
@@ -51,6 +53,13 @@ namespace ConsoleAppProject.App04
 
             likes = 0;
             comments = new List<String>();
+        }
+
+        public PhotoPost(string author, List<MessagePost> filename, List<MessagePost> caption)
+        {
+            this.author = author;
+            this.filename = filename;
+            this.caption = caption;
         }
 
 
