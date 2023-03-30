@@ -155,7 +155,7 @@ namespace ConsoleAppProject.App04
                 }
         }
 
-        internal void RemovePost(int ID)
+        public void RemovePost(int ID)
         {
             MessagePost message = FindMessages(ID);
 

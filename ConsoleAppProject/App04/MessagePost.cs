@@ -90,7 +90,8 @@ namespace ConsoleAppProject.App04
         public void Display()
         {
             Console.WriteLine();
-            Console.WriteLine($"    Author: {Username}");
+            Console.WriteLine($"    Message Id: {MessageId}");
+            Console.WriteLine($"    Author: {Author}");
             Console.WriteLine($"    Message: {Message}");
             Console.WriteLine($"    Time Elpased: {FormatElapsedTime(Timestamp)}");
             Console.WriteLine();
@@ -149,7 +150,7 @@ namespace ConsoleAppProject.App04
                 Console.WriteLine(comment);
         }
 
-        internal void Remove(MessagePost message)
+        public void Remove(MessagePost message)
         {
             throw new NotImplementedException();
         }

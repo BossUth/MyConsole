@@ -68,7 +68,7 @@ namespace ConsoleAppProject.App04
             DisplayAll();
             ConsoleHelper.OutputTitle($"Please Remove a Post");
             int ID = (int)ConsoleHelper.InputNumber("Please Enter The Post ID For The Post You Want To Remove> ", 1, NewsFeed.AmountOfPosts());
-            NewsFeed.Messages(ID);
+            NewsFeed.FindMessages(ID);
             NewsFeed.RemovePost(ID);
             Console.WriteLine();
         }
