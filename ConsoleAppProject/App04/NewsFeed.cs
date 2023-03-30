@@ -85,7 +85,7 @@ namespace ConsoleAppProject.App04
 
         internal double AmountOfPosts()
         {
-            throw new NotImplementedException();
+            return messages.Count;
         }
 
         public List<MessagePost> GetMessages()
@@ -115,14 +115,10 @@ namespace ConsoleAppProject.App04
             Caption = EnterText("Enter Caption >");
             Console.WriteLine();
             PhotoPost message = new PhotoPost(Author, Filename, Caption);
-            AddPhotoMessage(message);
+            AddPhotoPost(message);
         }
 
-        private void AddPhotoMessage(PhotoPost message)
-        {
-            throw new NotImplementedException();
-        }
-
+        
         public void FindMessages(int ID)
         {
             foreach (MessagePost message in messages)
@@ -171,6 +167,8 @@ namespace ConsoleAppProject.App04
                 messages.Remove(message);
                 message.Display();
             }
+
+
         }
 
         internal void UnlikePost(int ID)
