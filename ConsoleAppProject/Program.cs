@@ -29,6 +29,7 @@ namespace ConsoleAppProject
 
              DistanceConverter converter = new DistanceConverter();
             StudentGrades studentgrades = new StudentGrades();
+            NetworkApp app04 = new NetworkApp();
 
             Console.WriteLine("\t");
             Console.WriteLine("  Choose the application by entering the number ");
@@ -73,6 +74,19 @@ namespace ConsoleAppProject
                 studentgrades.Run();
             }
 
+            else if (choice == 4)
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine();
+                Console.WriteLine(" =================================================");
+                Console.WriteLine("          Welcome to Students Grades App! ");
+                Console.WriteLine(" =================================================");
+                Console.WriteLine();
+                Console.ForegroundColor = ConsoleColor.Green;
+                app04.Run();
+            }
+            
+            app04.Run();
         }
 
 

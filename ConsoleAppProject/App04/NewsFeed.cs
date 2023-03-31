@@ -1,185 +1,161 @@
-﻿using System;
+﻿using ConsoleAppProject.Helpers;
+using System;
 using System.Collections.Generic;
-using System.Transactions;
+using System.Text;
 
 namespace ConsoleAppProject.App04
 {
-    ///<summary>
-    /// The NewsFeed class stores news posts for the news feed in a social network 
-    /// application.
-    /// 
-    /// Display of the posts is currently simulated by printing the details to the
-    /// terminal. (Later, this should display in a browser.)
-    /// 
-    /// This version does not save the data to disk, and it does not provide any
-    /// search or ordering functions.
-    ///</summary>
-    ///<author>
-    ///  Michael Kölling and David J. Barnes
-    ///  version 0.1
-    ///</author> 
     public class NewsFeed
     {
-        private readonly List<MessagePost> messages;
-        private readonly List<PhotoPost> photos;
+        /// <summary>
+        /// Variables declared for use in app
+        /// </summary>
+        private readonly List<Post> posts;
+        public String Message;
+        public String Author;
+        public String Filename;
+        public String Caption;
+        public int like;
 
-        public List<MessagePost> Filename { get; private set; }
-        public string Author { get; private set; }
-        public List<MessagePost> Caption { get; private set; }
-
-        ///<summary>
-        /// Construct an empty news feed.
-        ///</summary>
+        /// <summary>
+        ///  Constructor for Newsfeed
+        /// </summary>
         public NewsFeed()
         {
-            messages = new List<MessagePost>();
-            photos = new List<PhotoPost>();
+            posts = new List<Post>();
         }
 
-
-        ///<summary>
-        /// Add a text post to the news feed.
-        /// 
-        /// @param text  The text post to be added.
-        ///</summary>
-        public void AddMessagePost(MessagePost message)
+        /// <summary>
+        /// Adds Photo Messages
+        /// </summary>
+        /// <param name="photo"></param>
+        public void AddPhotoMessage(PhotoPost photo)
         {
-            messages.Add(message);
+            posts.Add(photo);
         }
 
-        ///<summary>
-        /// Add a photo post to the news feed.
-        /// 
-        /// @param photo  The photo post to be added.
-        ///</summary>
-        public void AddPhotoPost(PhotoPost photo)
+        public void AddMessagePost(MessagePost post)
         {
-            photos.Add(photo);
+            posts.Add(post);
         }
 
-        ///<summary>
-        /// Show the news feed. Currently: print the news feed details to the
-        /// terminal. (To do: replace this later with display in web browser.)
-        ///</summary>
         public void Display()
         {
-            // display all text posts
-            foreach (MessagePost message in messages)
-            {
-                message.Display();
-                Console.WriteLine();   // empty line between posts
-            }
+            ConsoleHelper.OutputTitle("Displaying All Posts");
 
-            // display all photos
-            foreach (PhotoPost photo in photos)
+            foreach (Post post in posts)
             {
-                photo.Display();
-                Console.WriteLine();   // empty line between posts
+                post.Display();
+                Console.WriteLine();
             }
         }
 
-        internal void AddComment(int iD, string comment)
+        public void CreateMessagePost()
         {
-            throw new NotImplementedException();
-        }
 
-        internal double AmountOfPosts()
-        {
-            return messages.Count;
-        }
-
-        public List<MessagePost> GetMessages()
-        {
-            return messages;
-        }
-
-        public void CreateMessagePost(List<MessagePost> GetMessages)
-        {
             Console.WriteLine();
-            GetMessages = EnterText("Please Enter Message");
-        }
-
-        private List<MessagePost> EnterText(string Message)
-        {
-            string text;
-            Console.Write(Message);
-            text = Console.ReadLine();
-            return text;
+            Message = EnterText("      Enter Message >");
+            Console.WriteLine();
+            Author = EnterText("      Enter Author >");
+            Console.WriteLine();
+            MessagePost post = new MessagePost(Message, Author);
+            AddMessagePost(post);
         }
 
         public void CreatePhotoPost()
         {
             Console.WriteLine();
-            Filename = EnterText("Enter Filename >");
+            Filename = EnterText("      Enter Filename >");
             Console.WriteLine();
-            Caption = EnterText("Enter Caption >");
+            Caption = EnterText("      Enter Caption >");
             Console.WriteLine();
-            PhotoPost message = new PhotoPost(Author, Filename, Caption);
-            AddPhotoPost(message);
+            PhotoPost post = new PhotoPost(Author, Filename, Caption);
+            AddPhotoMessage(post);
         }
 
-        
-        public void FindMessages(int ID)
+        public string EnterText(string EnterTextMessage)
         {
-            foreach (MessagePost message in messages)
-                if (message.MessageId == ID)
+            string text;
+            Console.Write(EnterTextMessage);
+            text = Console.ReadLine();
+            return text;
+        }
+
+        public Post FindPost(int id)
+        {
+            foreach (Post post in posts)
+                if (post.PostID == id)
                 {
-                    return;
+                    return post;
                 }
+            return null;
         }
 
-        public void FindPostByAuthor(string author)
+        public void FindPostByAuthor(String author)
         {
-            foreach (MessagePost message in messages)
-                if (message.Author == author)
+            foreach (Post post in posts)
+                if (post.Author == author)
                 {
-                    message.Display();
+                    post.Display();
                 }
                 else
                 {
-                    Console.WriteLine("Author Not Found");
+                    Console.WriteLine("      Author Not Found");
                 }
         }
 
-        internal void LikePost(int ID)
+        public void RemovePost(int id)
         {
-            foreach (MessagePost message in messages)
+            Post post = FindPost(id);
 
-                if (message.PostID == ID)
-                {
-                    message.Like();
-                }
-        }
-
-        public void RemovePost(int ID)
-        {
-            MessagePost message = FindMessages(ID);
-
-            if (message != null)
+            if (post != null)
             {
-                Console.WriteLine($"\n The Post with ID {ID} has been Removed");
-                message.Remove(message);
+                Console.WriteLine($"\n      The Post with ID {id} has been Removed");
+                posts.Remove(post);
             }
             else
             {
-                Console.WriteLine($"\n The Post with ID {ID} does not exist");
-
-                messages.Remove(message);
-                message.Display();
+                Console.WriteLine($"\n      The Post with ID {id} does not exist");
             }
 
-
         }
 
-        internal void UnlikePost(int ID)
+        public int AmountOfPosts()
         {
-            foreach (MessagePost message in messages)
+            return posts.Count;
+        }
 
-                if (message.PostID == ID)
+        public void AddComment(int ID, string text)
+        {
+            foreach (Post post in posts)
+
+                if (post.PostID == ID)
                 {
-                    message.Unlike();
+                    post.comments.Add(text);
                 }
         }
-    }
 
+        public void Addlike(int ID)
+        {
+            foreach (Post post in posts)
+
+                if (post.PostID == ID)
+                {
+                    post.Like();
+                }
+
+        }
+
+        public void unlike(int ID)
+        {
+            foreach (Post post in posts)
+
+                if (post.PostID == ID)
+                {
+                    post.Unlike();
+                }
+        }
+
+
+    }
 }

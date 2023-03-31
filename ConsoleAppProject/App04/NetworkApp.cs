@@ -1,34 +1,39 @@
-﻿using ConsoleAppProject.Helpers;
-using LanguageExt;
-using LanguageExt.Pretty;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Text;
+using ConsoleAppProject.Helpers;
 
 namespace ConsoleAppProject.App04
 {
+    /// <summary>
+    /// This app will allow the user to add messages and photos
+    /// to a list of posts.  Users can also display those posts
+    /// in a variety of ways.
+    /// </summary>
     public class NetworkApp
     {
         public NewsFeed NewsFeed = new NewsFeed();
 
-        public void Run ()
+
+        public void Run()
         {
             DisplayMenu();
         }
 
-        public void DisplayMenu ()
+        public void DisplayMenu()
         {
-            ConsoleHelper.OutputHeading("Uthmans News Feed");
+
+            ConsoleHelper.OutputHeading("Kyle News Feed");
 
             string[] choices = new string[]
             {
                 "Add Message Post", "Add Photo Post",
-                "Display All Post", "Display Post By Date",
-                "LIke/Unlike Post", "Quit"
+                "Display All Posts", "Display By Author" ,
+                "Remove Post", "Like", "Unlike" ,
+                "Add A Comment" , "Quit"
             };
 
-            bool wantToQuit = false;
+            bool Quit = false; ;
 
             do
             {
@@ -36,7 +41,7 @@ namespace ConsoleAppProject.App04
 
                 switch (choice)
                 {
-                    case 1: NewsFeed.CreateMessagePost(NewsFeed.GetMessages()); break;
+                    case 1: NewsFeed.CreateMessagePost(); break;
                     case 2: NewsFeed.CreatePhotoPost(); break;
                     case 3: DisplayAll(); break;
                     case 4: DisplayByAuthor(); break;
@@ -44,47 +49,10 @@ namespace ConsoleAppProject.App04
                     case 6: ID = LikePost(); break;
                     case 7: ID = UnlikePost(); break;
                     case 8: ID = AddComment(); break;
-                    case 9: wantToQuit = true; break;
+                    case 9: Quit = true; break;
                 }
-            } while (!wantToQuit);
-        }
 
-        private void DisplayAll()
-        {
-            NewsFeed.Display();
-        }
-
-        private void DisplayByAuthor()
-        {
-            DisplayAll();
-            Console.Write("Enter Author Name> ");
-            string author = Console.ReadLine();
-            NewsFeed.FindPostByAuthor(author);
-            Console.WriteLine();
-        }
-
-        private void RemovePost()
-        {
-            DisplayAll();
-            ConsoleHelper.OutputTitle($"Please Remove a Post");
-            int ID = (int)ConsoleHelper.InputNumber("Please Enter The Post ID For The Post You Want To Remove> ", 1, NewsFeed.AmountOfPosts());
-            NewsFeed.FindMessages(ID);
-            NewsFeed.RemovePost(ID);
-            Console.WriteLine();
-        }
-
-        private int LikePost()
-        {
-            int ID = (int)ConsoleHelper.InputNumber("Enter Post ID For The Post You Want To Like> ", 1, NewsFeed.AmountOfPosts());
-            NewsFeed.LikePost(ID);
-            return ID;
-        }
-
-        private int UnlikePost()
-        {
-            int ID = (int)ConsoleHelper.InputNumber("Enter Post ID For The Post You Want To Unlike> ", 1, NewsFeed.AmountOfPosts());
-            NewsFeed.UnlikePost(ID);
-            return ID;
+            } while (!Quit);
         }
 
         private int AddComment()
@@ -96,5 +64,43 @@ namespace ConsoleAppProject.App04
             NewsFeed.AddComment(ID, comment);
             return ID;
         }
+
+        private int UnlikePost()
+        {
+            int ID = (int)ConsoleHelper.InputNumber("Enter Post ID For The Post You Want To Unlike> ", 1, NewsFeed.AmountOfPosts());
+            NewsFeed.unlike(ID);
+            return ID;
+        }
+
+        private int LikePost()
+        {
+            int ID = (int)ConsoleHelper.InputNumber("Enter Post ID For The Post You Want To Like> ", 1, NewsFeed.AmountOfPosts());
+            NewsFeed.Addlike(ID);
+            return ID;
+        }
+
+        private void RemovePost()
+        {
+            DisplayAll();
+            int ID = (int)ConsoleHelper.InputNumber("Enter Post ID For The Post You Want To Remove> ", 1, NewsFeed.AmountOfPosts());
+            NewsFeed.FindPost(ID);
+            NewsFeed.RemovePost(ID);
+            Console.WriteLine();
+        }
+
+        private void DisplayByAuthor()
+        {
+            DisplayAll();
+            Console.Write("Enter Author Name> ");
+            string author = Console.ReadLine();
+            NewsFeed.FindPostByAuthor(author);
+            Console.WriteLine();
+        }
+
+        private void DisplayAll()
+        {
+            NewsFeed.Display();
+        }
+
     }
 }
