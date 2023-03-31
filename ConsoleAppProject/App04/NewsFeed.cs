@@ -100,7 +100,7 @@ namespace ConsoleAppProject.App04
                 }
                 else
                 {
-                    Console.WriteLine("      Author Not Found");
+                    Console.WriteLine("Author Not Found");
                 }
         }
 
@@ -110,12 +110,12 @@ namespace ConsoleAppProject.App04
 
             if (post != null)
             {
-                Console.WriteLine($"\n      The Post with ID {id} has been Removed");
+                Console.WriteLine($"\nThe Post with ID {id} has been Removed");
                 posts.Remove(post);
             }
             else
             {
-                Console.WriteLine($"\n      The Post with ID {id} does not exist");
+                Console.WriteLine($"\nThe Post with ID {id} does not exist");
             }
 
         }
