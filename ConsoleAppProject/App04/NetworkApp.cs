@@ -23,7 +23,7 @@ namespace ConsoleAppProject.App04
         public void DisplayMenu()
         {
 
-            ConsoleHelper.OutputHeading("Kyle News Feed");
+            ConsoleHelper.OutputHeading("Uthmans News");
 
             string[] choices = new string[]
             {

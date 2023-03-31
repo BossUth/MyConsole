@@ -12,7 +12,7 @@ namespace ConsoleAppProject.App04
         public String Message;
 
         /// <summary>
-        /// Constructor for Message Post
+        /// Where you create where the text will go
         /// </summary>
         public MessagePost(String text, string author) : base(author)
         {
@@ -20,7 +20,7 @@ namespace ConsoleAppProject.App04
         }
 
         /// <summary>
-        /// Used to Display Message Post
+        /// For Displaying Message Post
         /// </summary>
         public override void Display()
         {

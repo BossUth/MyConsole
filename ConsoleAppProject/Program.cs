@@ -79,7 +79,7 @@ namespace ConsoleAppProject
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine();
                 Console.WriteLine(" =================================================");
-                Console.WriteLine("          Welcome to Students Grades App! ");
+                Console.WriteLine("          Welcome to Social Network App! ");
                 Console.WriteLine(" =================================================");
                 Console.WriteLine();
                 Console.ForegroundColor = ConsoleColor.Green;
