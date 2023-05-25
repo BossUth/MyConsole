@@ -42,8 +42,8 @@ namespace ConsoleAppProject.App06
         /// </summary>
         public void Start()
         {
-            Round = 1;
-            LastRound = 1;
+            //Round = 1;
+            
 
             CurrentPlayer = Human;
 
@@ -58,7 +58,7 @@ namespace ConsoleAppProject.App06
         /// </summary>
         public void MakeComputerChoice()
         {
-            int choice = generator.Next(1, 4);
+            int choice = generator.Next(1,4);
 
             switch (choice)
             {
@@ -151,7 +151,10 @@ namespace ConsoleAppProject.App06
             {
                 Winner = Human;
             }
-            else Winner = null;
+            else
+            {
+                Winner = null;
+            }
         }
     }
 }
