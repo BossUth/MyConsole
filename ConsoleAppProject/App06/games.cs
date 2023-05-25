@@ -22,6 +22,8 @@ namespace ConsoleAppProject.App06
         public Player Computer { get; }
         public Player CurrentPlayer { get; set; }
         public Player Winner { get; set; }
+        public bool Quit { get; private set; }
+
         private Random generator = new Random(55);
 
         /// <summary>
@@ -151,10 +153,7 @@ namespace ConsoleAppProject.App06
             {
                 Winner = Human;
             }
-            else
-            {
-                Winner = null;
-            }
-        }
+            else Winner = null;
+        } 
     }
 }

@@ -5,7 +5,12 @@ VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleAppProject", "ConsoleAppProject\ConsoleAppProject.csproj", "{C0C498FD-1AE4-4CE0-A050-C1E08874D1C5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UthTestProject", "UthTestProject\UthTestProject.csproj", "{52CA93F5-3A84-48E9-B16E-C7E49BB42F5B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UthTestProject", "UthTestProject\UthTestProject.csproj", "{52CA93F5-3A84-48E9-B16E-C7E49BB42F5B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E2AEDA02-0F2E-4577-97AA-D902E3E20EFB}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
