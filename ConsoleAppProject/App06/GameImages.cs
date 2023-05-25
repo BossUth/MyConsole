@@ -39,7 +39,7 @@ namespace ConsoleAppProject.App06
             Console.Write("    (----/    \\----)");
             Console.SetCursorPosition(x, y++);
             Console.Write("     \\  /      \\  /");
-            Console.SetCursorPosition(x, y);
+            Console.SetCursorPosition(x, y++);
             Console.Write("      ==        ==");
             Console.WriteLine("\n\n");
         }
@@ -75,7 +75,7 @@ namespace ConsoleAppProject.App06
             Console.Write("           `\\  o    ()         /'    ");
             Console.SetCursorPosition(x, y++);
             Console.Write("              `--___    ___--'    ");
-            Console.SetCursorPosition(x, y);
+            Console.SetCursorPosition(x, y++);
             Console.Write("                     ---         ");
             Console.WriteLine();
         }
@@ -111,7 +111,7 @@ namespace ConsoleAppProject.App06
             Console.Write("               \\                \\");
             Console.SetCursorPosition(x, y++);
             Console.Write("                \\ \\ \\ \\ \\ \\ \\ \\ \\\\");
-            Console.SetCursorPosition(x, y);
+            Console.SetCursorPosition(x, y++);
             Console.Write("                 \\________________\\");
             Console.WriteLine();
         }

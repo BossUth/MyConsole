@@ -272,7 +272,7 @@ namespace ConsoleAppProject.App06
                 default:
                     break;
             }
-            while (choice != 2) ;
+            while (choice != 5) ;
         }
     }
 }

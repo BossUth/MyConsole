@@ -46,7 +46,7 @@ namespace ConsoleAppProject
 
             string choicestr = Console.ReadLine();
             int choice;
-            if (!int.TryParse(choicestr, out choice) || (choice < 1 || choice > 4))
+            if (!int.TryParse(choicestr, out choice) || (choice < 1 || choice > 5))
             {
                 Console.WriteLine("Error! Try again");
                 return;
@@ -101,10 +101,6 @@ namespace ConsoleAppProject
                 app06.PlayGame();
             }
 
-            else
-            {
-                Console.WriteLine("Invalid Choice !");
-            }
         }
 
 
