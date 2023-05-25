@@ -2,6 +2,7 @@
 using ConsoleAppProject.App02;
 using ConsoleAppProject.App03;
 using ConsoleAppProject.App04;
+using ConsoleAppProject.App06;
 using ConsoleAppProject.Helpers;
 using System;
 
@@ -30,6 +31,7 @@ namespace ConsoleAppProject
              DistanceConverter converter = new DistanceConverter();
             StudentGrades studentgrades = new StudentGrades();
             NetworkApp app04 = new NetworkApp();
+            GameView app06 = new GameView();
 
             Console.WriteLine("\t");
             Console.WriteLine("  Choose the application by entering the number ");
@@ -37,6 +39,7 @@ namespace ConsoleAppProject
             Console.WriteLine(" 2. BMI Calculator ");
             Console.WriteLine(" 3. Student Grades ");
             Console.WriteLine(" 4. Social Network ");
+            Console.WriteLine(" 5. Rock & Paper Game");
 
             Console.WriteLine("\t");
             Console.Write("Answer : ");
@@ -85,8 +88,23 @@ namespace ConsoleAppProject
                 Console.ForegroundColor = ConsoleColor.Green;
                 app04.Run();
             }
-            
-            app04.Run();
+
+            else if (choice == 5)
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine();
+                Console.WriteLine(" =================================================");
+                Console.WriteLine("          Welcome to Social Network App! ");
+                Console.WriteLine(" =================================================");
+                Console.WriteLine();
+                Console.ForegroundColor = ConsoleColor.Green;
+                app06.PlayGame();
+            }
+
+            else
+            {
+                Console.WriteLine("Invalid Choice !");
+            }
         }
 
 
