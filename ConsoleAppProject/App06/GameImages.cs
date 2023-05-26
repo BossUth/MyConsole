@@ -8,7 +8,7 @@ namespace ConsoleAppProject.App06
     /// for Rock-Paper-Scissors game
     /// </summary>
     /// <author>
-    /// Unkown ??
+    /// Uthman Uthman-Nureni
     /// </author>
     public static class GameImages
     {

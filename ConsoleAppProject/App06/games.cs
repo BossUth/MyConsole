@@ -10,7 +10,7 @@ namespace ConsoleAppProject.App06
     /// round and determining a winner at the end of the game
     /// </summary>
     /// <author>
-    /// Samuel Baker 22/05/2022
+    /// Uthman Uthman-Nureni
     /// </author> 
     public class Game
     {

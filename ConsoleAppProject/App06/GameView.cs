@@ -11,7 +11,7 @@ namespace ConsoleAppProject.App06
     /// Console
     /// </summary>
     /// <author>
-    /// Samuel Baker 23/05/2022
+    /// Uthman Uthman-Nureni
     /// </author>
     public class GameView
     {
@@ -232,7 +232,6 @@ namespace ConsoleAppProject.App06
                 game.Computer.Score);
             Console.WriteLine();
         }
-        //sihanharoon@bucks.ac.uk
         /// <summary>
         /// One player or more players have reached the chosen 
         /// maximum score and the winner can be decided.

@@ -4,7 +4,7 @@
     /// This class contains the players of the game
     /// </summary>
     /// <author>
-    /// Samuel Baker 16/05/2022
+    /// Uthman Uthman-Nureni
     /// </author> 
     public enum GamePlayers
     {
